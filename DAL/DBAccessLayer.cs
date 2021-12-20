@@ -5,8 +5,17 @@ namespace IT481_Unit_2_Assignment.DAL
 {
     class DBAccessLayer
     {
+        //Variables
+        string connString;
+
+        //Constructor
+        public DBAccessLayer(string connSt)
+        {
+            connString = connSt;
+        }
+
         //Methods
-        public DataTable Get_Customers(string connString)
+        public DataTable Get_Customers()
         {
             SqlCommand command = new SqlCommand();
             SqlConnection conn = new SqlConnection(connString);
@@ -20,7 +29,7 @@ namespace IT481_Unit_2_Assignment.DAL
 
             return dt;
         }
-        public void Save_Customers(DataTable dt, string connString)
+        public void Save_Customers(DataTable dt)
         {
             SqlCommand command = new SqlCommand();
             SqlConnection conn = new SqlConnection(connString);

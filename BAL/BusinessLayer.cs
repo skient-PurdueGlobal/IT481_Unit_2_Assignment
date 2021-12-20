@@ -5,14 +5,14 @@ namespace IT481_Unit_2_Assignment.BAL
 {
     class BusinessLayer
     {
+        //Variables
+        private static string connString = @"Data Source=dellG3;Initial Catalog=Northwind;Integrated Security=true;TrustServerCertificate=true";
+
         //Class Initialization
-        DAL.DBAccessLayer dbAccess = new DAL.DBAccessLayer();
+        DAL.DBAccessLayer dbAccess = new DAL.DBAccessLayer(connString);
 
         //Data Objects
         DataTable customerData = new DataTable();
-
-        //Variables
-        string connString = @"Data Source=dellG3;Initial Catalog=Northwind;Integrated Security=true;TrustServerCertificate=true";
 
         //Methods
         public string Load_Customer_Data()
@@ -21,7 +21,7 @@ namespace IT481_Unit_2_Assignment.BAL
 
             try
             {
-                customerData = dbAccess.Get_Customers(connString);
+                customerData = dbAccess.Get_Customers();
                 status = "Connection Established Successfully..." + Environment.NewLine + "Customer Data Loaded Successfully...";
             }
             catch (Exception ex)
@@ -37,7 +37,7 @@ namespace IT481_Unit_2_Assignment.BAL
 
             try
             {
-                dbAccess.Save_Customers(customerData, connString);
+                dbAccess.Save_Customers(customerData);
                 status = "Database Successfully Updated...";
             }
             catch (Exception ex)
