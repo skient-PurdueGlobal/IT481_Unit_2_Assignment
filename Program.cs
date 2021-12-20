@@ -17,7 +17,7 @@ namespace IT481_Unit_2_Assignment
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new PAL.MainPage());
         }
     }
 }
